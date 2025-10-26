@@ -68,8 +68,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe all month cards and content cards
+    // Observe all month cards, content cards, and table rows
     document.querySelectorAll('.month-card, .content-card').forEach(card => {
         observer.observe(card);
+    });
+    
+    // Add special animation for table rows with delay
+    const tableRows = document.querySelectorAll('.results-table tbody tr');
+    tableRows.forEach((row, index) => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-20px)';
+        
+        setTimeout(() => {
+            row.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            row.style.opacity = '1';
+            row.style.transform = 'translateX(0)';
+        }, 100 + (index * 50));
     });
 });

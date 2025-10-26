@@ -765,6 +765,7 @@ body[data-theme="navy"] {
     --card-text: #333;
     --hero-bg: linear-gradient(135deg, #2C3E80 0%, #1a2550 100%);
     --header-bg: #2C3E80;
+    --primary-color-rgb: 44, 62, 128;
 }
 
 body[data-theme="green"] {
@@ -776,6 +777,7 @@ body[data-theme="green"] {
     --card-text: #333;
     --hero-bg: linear-gradient(135deg, #2D7A3E 0%, #1a5028 100%);
     --header-bg: #2D7A3E;
+    --primary-color-rgb: 45, 122, 62;
 }
 
 body[data-theme="purple"] {
@@ -787,6 +789,7 @@ body[data-theme="purple"] {
     --card-text: #333;
     --hero-bg: linear-gradient(135deg, #6B46C1 0%, #4a2f87 100%);
     --header-bg: #6B46C1;
+    --primary-color-rgb: 107, 70, 193;
 }
 
 /* Header */
@@ -1144,6 +1147,167 @@ body[data-theme="purple"] .theme-btn[data-theme="purple"] {
 .rules-list li strong {
     color: var(--primary-color);
     transition: color 0.3s ease;
+}
+
+/* Results Table */
+.table-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 1rem;
+}
+
+.results-table thead {
+    background: var(--primary-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+.results-table thead th {
+    padding: 1.2rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.results-table thead th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.results-table thead th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.results-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.results-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.results-table tbody tr:hover {
+    background-color: rgba(var(--primary-color-rgb, 44, 62, 128), 0.1);
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.results-table tbody td {
+    padding: 1rem;
+    color: var(--card-text);
+}
+
+.results-table tbody td:nth-child(4) {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+/* Medal rows styling */
+.medal-row {
+    font-weight: 500;
+}
+
+.medal-row.gold {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%) !important;
+}
+
+.medal-row.silver {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.15) 0%, rgba(192, 192, 192, 0.05) 100%) !important;
+}
+
+.medal-row.bronze {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.15) 0%, rgba(205, 127, 50, 0.05) 100%) !important;
+}
+
+.medal {
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+    display: inline-block;
+    animation: medal-shine 2s ease-in-out infinite;
+}
+
+@keyframes medal-shine {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.medal-row:hover {
+    background: linear-gradient(90deg, var(--primary-color) 0%, rgba(var(--primary-color-rgb, 44, 62, 128), 0.7) 100%) !important;
+    color: white;
+}
+
+.medal-row:hover td {
+    color: white !important;
+}
+
+.table-note {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(var(--primary-color-rgb, 44, 62, 128), 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Responsive table design */
+@media (max-width: 768px) {
+    .results-table {
+        font-size: 0.9rem;
+    }
+    
+    .results-table thead th {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .results-table tbody td {
+        padding: 0.8rem 0.5rem;
+    }
+    
+    .table-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .results-table {
+        font-size: 0.85rem;
+    }
+    
+    .results-table thead th,
+    .results-table tbody td {
+        padding: 0.6rem 0.4rem;
+    }
+    
+    .medal {
+        font-size: 1.2rem;
+    }
+    
+    .table-note {
+        font-size: 0.9rem;
+    }
 }
 
 /* Contact Info */
